@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FMSocker"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Socker client for handling multiple web socket channels on a single connection."
   s.homepage     = "https://github.com/5monkeys/FMSocker"
   s.license      = "MIT"
