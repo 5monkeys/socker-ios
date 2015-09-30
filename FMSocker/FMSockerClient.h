@@ -10,16 +10,19 @@
 
 @class FMSockerMessage;
 
-typedef void (^FMSockerMessageCompletionBlock)(FMSockerMessage *message, NSError *error);
+typedef void (^FMSockerMessageReceivedBlock)(FMSockerMessage *message, NSError *error);
 
 @interface FMSockerClient : NSObject
 
-+ (instancetype)sharedClient;
+- (instancetype)initWithURL:(NSURL *)URL;
 
-- (void)subscribe:(NSString *)channel completion:(FMSockerMessageCompletionBlock)completion;
-- (void)unsubscribe:(NSString *)channel;
+- (void)subscribeOnChannel:(NSString *)channel onMessage:(FMSockerMessageReceivedBlock)onMessageBlock;
+- (void)unsubscribeChannel:(NSString *)channel;
 - (void)unsubscribeAll;
 - (void)disconnect;
 - (void)connect;
+- (void)sendSockerMessage:(FMSockerMessage *)message onChannel:(NSString *)channel;
+
+@property (nonatomic, strong, readonly) NSMutableDictionary *subscriptions;
 
 @end

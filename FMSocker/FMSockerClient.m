@@ -19,42 +19,26 @@
 @property (nonatomic, copy) NSURL *url;
 @property (nonatomic, strong) NSMutableDictionary *subscriptions;
 @property (nonatomic, strong) NSMutableArray *messageQueue;
-@property (nonatomic, strong) NSString *webSocketURL;
+@property (nonatomic, copy) NSURL *URL;
 
 @end
 
 @implementation FMSockerClient
 
-+ (instancetype)sharedClient
-{
-    static FMSockerClient *sharedClient;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-      sharedClient = [[self alloc] init];
-    });
-
-    return sharedClient;
-}
-
-- (instancetype)init
+- (instancetype)initWithURL:(NSURL *)URL
 {
     if (self = [super init]) {
-        self.subscriptions = [NSMutableDictionary dictionary];
-        self.messageQueue = [NSMutableArray array];
+        _subscriptions = [NSMutableDictionary dictionary];
+        _messageQueue = [NSMutableArray array];
+        _URL = URL;
     }
     return self;
-}
-
-- (void)dealloc
-{
-    [self disconnect];
 }
 
 - (void)connect
 {
     [self disconnect];
-    self.webSocket = [[SRWebSocket alloc]
-        initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@""]]];
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:self.URL]];
     self.webSocket.delegate = self;
     [self.webSocket open];
 }
@@ -76,33 +60,32 @@
     return self.webSocket.readyState == SR_CLOSED;
 }
 
-- (void)subscribe:(NSString *)channel completion:(FMSockerMessageCompletionBlock)completion
+- (void)subscribeOnChannel:(NSString *)channel onMessage:(FMSockerMessageReceivedBlock)onMessageBlock;
 {
-    self.subscriptions[channel] = completion;
-    [self sendMessage:@"subscribe" data:channel];
+    self.subscriptions[channel] = onMessageBlock;
+    [self sendData:channel onChannel:@"subscribe"];
 }
 
-- (void)unsubscribe:(NSString *)channel
+- (void)unsubscribeChannel:(NSString *)channel
 {
     [self.subscriptions removeObjectForKey:channel];
     if (![self isConnected]) {
         return;
     }
-    [self sendMessage:@"unsubscribe" data:channel];
+    [self sendData:channel onChannel:@"unsubscribe"];
 }
 
 - (void)unsubscribeAll
 {
-    for (NSString *channel in self.subscriptions) {
-        [self unsubscribe:channel];
+    for (NSString *channel in self.subscriptions.allKeys) {
+        [self unsubscribeChannel:channel];
     }
 }
 
-- (void)sendMessage:(NSString *)channel data:(id)data
+- (void)sendSockerMessage:(FMSockerMessage *)message onChannel:(NSString *)channel
 {
-    FMSockerMessage *message = [[FMSockerMessage alloc] initWithName:channel andData:data];
     NSError *error;
-    NSString *messageString = [message toString:&error];
+    NSString *messageString = [message toStringAndReturnError:&error];
     if (!error) {
         if (![self isConnected]) {
             [self.messageQueue addObject:messageString];
@@ -114,6 +97,12 @@
     else {
         NSLog(@"Failed to send message on channel %@ with error %@", channel, [error localizedDescription]);
     }
+}
+
+- (void)sendData:(id)data onChannel:(NSString *)channel
+{
+    FMSockerMessage *message = [[FMSockerMessage alloc] initWithName:channel andData:data];
+    [self sendSockerMessage:message onChannel:channel];
 }
 
 #pragma mark - SRWebSocketDelegate
@@ -143,13 +132,13 @@
     }
     NSError *error;
     FMSockerMessage *sockerMessage = [FMSockerMessage messageFromString:(NSString *)message error:&error];
-    FMSockerMessageCompletionBlock subscriptionCompletion = self.subscriptions[sockerMessage.name];
-    if (subscriptionCompletion) {
+    FMSockerMessageReceivedBlock messageReceivedBlock = self.subscriptions[sockerMessage.name];
+    if (messageReceivedBlock) {
         if (!error && sockerMessage) {
-            subscriptionCompletion(sockerMessage, nil);
+            messageReceivedBlock(sockerMessage, nil);
         }
         else {
-            subscriptionCompletion(nil, error);
+            messageReceivedBlock(nil, error);
         }
     }
     else {

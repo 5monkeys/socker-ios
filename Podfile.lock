@@ -1,0 +1,13 @@
+PODS:
+  - OCMock (3.1.5)
+  - SocketRocket (0.4.1)
+
+DEPENDENCIES:
+  - OCMock (= 3.1.5)
+  - SocketRocket (~> 0.4.1)
+
+SPEC CHECKSUMS:
+  OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
+  SocketRocket: ee0b5c34182d37bb4f1f8d628bbe737718126daa
+
+COCOAPODS: 0.38.2

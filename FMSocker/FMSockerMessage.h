@@ -12,7 +12,7 @@
 
 + (instancetype)messageFromString:(NSString *)string error:(NSError **)errorPtr;
 - (instancetype)initWithName:(NSString *)name andData:(id)data;
-- (NSString *)toString:(NSError **)errorPtr;
+- (NSString *)toStringAndReturnError:(NSError **)errorPtr;
 
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) id data;

@@ -34,19 +34,21 @@
         *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerInvalidDataError userInfo:nil];
         return nil;
     }
+    NSRange range = [string rangeOfString:@"|"];
+
     // Check for socker protocol fullfilment
-    if ([string rangeOfString:@"|"].location == NSNotFound) {
-        *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
-        return nil;
-    }
-    NSArray *values = [string componentsSeparatedByString:@"|"];
-    if ([values count] != 2) {
+    if (range.location == NSNotFound) {
         *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
         return nil;
     }
     // Parse payload
-    NSString *name = values[0];
-    NSData *jsonData = [values[1] dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *name = [string substringToIndex:range.location];
+    if ([name length] == 0) {
+        // Missing channel
+        *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
+        return nil;
+    }
+    NSData *jsonData = [[string substringFromIndex:range.location + range.length] dataUsingEncoding:NSUTF8StringEncoding];
     id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:errorPtr];
     if (*errorPtr) {
         return nil;
@@ -54,7 +56,7 @@
     return [[FMSockerMessage alloc] initWithName:name andData:jsonObject];
 }
 
-- (NSString *)toString:(NSError **)errorPtr
+- (NSString *)toStringAndReturnError:(NSError **)errorPtr
 {
     NSString *payload;
     if ([self.data isKindOfClass:[NSArray class]] || [self.data isKindOfClass:[NSDictionary class]]) {
