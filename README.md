@@ -4,6 +4,12 @@ Socker iOS client
 
 An iOS client for communicating with a [socker](https://github.com/5monkeys/socker) websocket server which supports subscribing on multiple channels on a single connection. It is based on the very good [SocketRocket](https://github.com/square/SocketRocket) library.
 
+## Installation
+Add the following to your `Podfile` and run `pod install`
+```bash
+pod 'FMSocker'
+```
+
 ## Usage
 
 Import the library:
@@ -12,14 +18,16 @@ Import the library:
 #import <FMSocker/FMSocker.h>
 ```
 
-Subscribe on channels:
+Initiate the client with a url to your socker server:
 ```objective-c
-// Initiate the client with a url to your socker server
 FMSockerClient *sockerClient = [[FMSockerClient alloc] initWithURL:[NSURL URLWithString:@"wss://example.com"]];
 
 // Connect to the server
 [sockerClient connect];
+```
 
+Subscribe on channels:
+```objective-c
 // Subscribe on foo channel
 [sockerClient subscribeOnChannel:@"foo"
                        onMessage:^(FMSockerMessage *message, NSError *error){
@@ -57,3 +65,18 @@ NSError *error;
 
 ```
 
+Unsubscribe channels:
+```objective-c
+// Unsubscribe channel named foo
+[sockerClient unsubscribeChannel:@"foo"];
+```
+
+Unsubscribe all channels:
+```objective-c
+[sockerClient unsubscribeAll];
+```
+
+Disconnect websocket:
+```objective-c
+[sockerClient disconnect];
+```
