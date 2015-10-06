@@ -2,7 +2,7 @@ Socker iOS client
 ============
 [![Build Status](https://travis-ci.org/5monkeys/socker-ios.svg)](https://travis-ci.org/5monkeys/socker-ios)
 
-A iOS client for communicating with a [socker](https://github.com/5monkeys/socker) websocket server. It is based on the very good [SocketRocket](https://github.com/square/SocketRocket) library.
+An iOS client for communicating with a [socker](https://github.com/5monkeys/socker) websocket server which supports subscribing on multiple channels on a single connection. It is based on the very good [SocketRocket](https://github.com/square/SocketRocket) library.
 
 ## Usage
 
