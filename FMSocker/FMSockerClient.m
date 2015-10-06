@@ -82,7 +82,7 @@
     }
 }
 
-- (void)sendSockerMessage:(FMSockerMessage *)message onChannel:(NSString *)channel
+- (void)sendSockerMessage:(FMSockerMessage *)message
 {
     NSError *error;
     NSString *messageString = [message toStringAndReturnError:&error];
@@ -95,14 +95,14 @@
         }
     }
     else {
-        NSLog(@"Failed to send message on channel %@ with error %@", channel, [error localizedDescription]);
+        NSLog(@"Failed to send message on channel %@ with error %@", message.name, [error localizedDescription]);
     }
 }
 
 - (void)sendData:(id)data onChannel:(NSString *)channel
 {
     FMSockerMessage *message = [[FMSockerMessage alloc] initWithName:channel andData:data];
-    [self sendSockerMessage:message onChannel:channel];
+    [self sendSockerMessage:message];
 }
 
 #pragma mark - SRWebSocketDelegate

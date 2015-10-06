@@ -21,7 +21,7 @@ typedef void (^FMSockerMessageReceivedBlock)(FMSockerMessage *message, NSError *
 - (void)unsubscribeAll;
 - (void)disconnect;
 - (void)connect;
-- (void)sendSockerMessage:(FMSockerMessage *)message onChannel:(NSString *)channel;
+- (void)sendSockerMessage:(FMSockerMessage *)message;
 
 @property (nonatomic, strong, readonly) NSMutableDictionary *subscriptions;
 

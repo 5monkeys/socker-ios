@@ -121,8 +121,6 @@
     FMSockerMessage *message = [[FMSockerMessage alloc] initWithName:@"test" andData:nil];
     NSError *error;
     XCTAssertThrowsSpecific([message toStringAndReturnError:&error], NSException);
-
 }
-
 
 @end

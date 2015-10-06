@@ -144,7 +144,7 @@
     // Test sending message not connected
     OCMStub([socketMock readyState]).andReturn(SR_CLOSED);
     FMSockerMessage *message2 = [[FMSockerMessage alloc] initWithName:@"test" andData:@{ @"foo" : @"bar" }];
-    [sockerClient sendSockerMessage:message2 onChannel:@"test"];
+    [sockerClient sendSockerMessage:message2];
     XCTAssertEqual([[sockerClient valueForKey:@"messageQueue"] count], 1);
 
     [sockerClient webSocketDidOpen:socketMock];
@@ -166,7 +166,7 @@
     // Test sending message connected
     OCMStub([socketMock readyState]).andReturn(SR_OPEN);
     FMSockerMessage *message1 = [[FMSockerMessage alloc] initWithName:@"test" andData:@{ @"foo" : @"bar" }];
-    [sockerClient sendSockerMessage:message1 onChannel:@"test"];
+    [sockerClient sendSockerMessage:message1];
     XCTAssertEqual([[sockerClient valueForKey:@"messageQueue"] count], 0);
 }
 
