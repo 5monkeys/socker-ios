@@ -52,7 +52,8 @@ FMSockerClient *sockerClient = [[FMSockerClient alloc] initWithURL:[NSURL URLWit
 [sockerClient connect];
 
 // Send the message
-[sockerClient sendSockerMessage:message];
+NSError *error;
+[sockerClient sendSockerMessage:message error:&error];
 
 ```
 
