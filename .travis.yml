@@ -9,7 +9,7 @@ before_install:
 install:
   - pod install
 script:
-  - xcodebuild test -workspace FMSocker.xcworkspace -scheme FMSocker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 4s'
+  - xcodebuild test -workspace socker-ios.xcworkspace -scheme FMSocker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 4s'
   - pod lib lint --quick
 
 notifications:
