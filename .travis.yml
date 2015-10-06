@@ -4,7 +4,7 @@ cache:
   - cocoapods
 before_install:
   - gem install cocoapods --pre --quiet --no-ri --no-rdoc
-  - gem install xcpretty
+  - gem install xcpretty --quiet --no-ri --no-rdoc
   - pod setup --silent
   - pod repo update --silent
 install:
