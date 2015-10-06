@@ -11,7 +11,7 @@ install:
   - pod install
 script:
   - pod lib lint --quick
-  - xcodebuild test -workspace socker-ios.xcworkspace -scheme FMSocker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 4s' -destination 'platform=iOS Simulator,name=iPhone 6 Plus' | xcpretty -c && exit ${PIPESTATUS[0]}
+  - set -o pipefail && xcodebuild test -workspace socker-ios.xcworkspace -scheme FMSocker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 4s' -destination 'platform=iOS Simulator,name=iPhone 6 Plus' | xcpretty -c
 
 notifications:
   email:
