@@ -19,7 +19,7 @@
                BlueprintIdentifier = "D1BFF6271BBB22AF00E1AF90"
                BuildableName = "FMSockerTests.xctest"
                BlueprintName = "FMSockerTests"
-               ReferencedContainer = "container:FMSocker.xcodeproj">
+               ReferencedContainer = "container:socker-ios.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

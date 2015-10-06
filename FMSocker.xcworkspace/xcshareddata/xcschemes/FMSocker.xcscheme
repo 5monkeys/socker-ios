@@ -17,7 +17,7 @@
                BlueprintIdentifier = "D1BFF61D1BBB22AF00E1AF90"
                BuildableName = "FMSocker.framework"
                BlueprintName = "FMSocker"
-               ReferencedContainer = "container:FMSocker.xcodeproj">
+               ReferencedContainer = "container:socker-ios.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "D1BFF6271BBB22AF00E1AF90"
                BuildableName = "FMSockerTests.xctest"
                BlueprintName = "FMSockerTests"
-               ReferencedContainer = "container:FMSocker.xcodeproj">
+               ReferencedContainer = "container:socker-ios.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "D1BFF61D1BBB22AF00E1AF90"
             BuildableName = "FMSocker.framework"
             BlueprintName = "FMSocker"
-            ReferencedContainer = "container:FMSocker.xcodeproj">
+            ReferencedContainer = "container:socker-ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "D1BFF61D1BBB22AF00E1AF90"
             BuildableName = "FMSocker.framework"
             BlueprintName = "FMSocker"
-            ReferencedContainer = "container:FMSocker.xcodeproj">
+            ReferencedContainer = "container:socker-ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "D1BFF61D1BBB22AF00E1AF90"
             BuildableName = "FMSocker.framework"
             BlueprintName = "FMSocker"
-            ReferencedContainer = "container:FMSocker.xcodeproj">
+            ReferencedContainer = "container:socker-ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -217,7 +217,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D1BFF6181BBB22AF00E1AF90 /* Build configuration list for PBXProject "FMSocker" */;
+			buildConfigurationList = D1BFF6181BBB22AF00E1AF90 /* Build configuration list for PBXProject "socker-ios" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -493,7 +493,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D1BFF6181BBB22AF00E1AF90 /* Build configuration list for PBXProject "FMSocker" */ = {
+		D1BFF6181BBB22AF00E1AF90 /* Build configuration list for PBXProject "socker-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1BFF6301BBB22AF00E1AF90 /* Debug */,
