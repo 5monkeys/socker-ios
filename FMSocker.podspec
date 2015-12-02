@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FMSocker"
-  s.version      = "0.0.1"
+  s.version      = "0.1"
   s.summary      = "An iOS client for communicating with a socker websocket server which supports subscribing on multiple channels on a single connection."
   s.homepage     = "https://github.com/5monkeys/socker-ios"
   s.license      = "MIT"
