@@ -10,9 +10,7 @@
 
 #import "FMSockerMessage.h"
 
-#import "SRWebSocket.h"
-
-@interface FMSockerClient () <SRWebSocketDelegate>
+@interface FMSockerClient ()
 
 @property (nonatomic, strong) SRWebSocket *webSocket;
 @property (nonatomic, copy) NSString *channel;

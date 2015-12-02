@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SRWebSocket.h"
+
 @class FMSockerMessage;
 
 typedef void (^FMSockerMessageReceivedBlock)(FMSockerMessage *message, NSError *error);
 
-@interface FMSockerClient : NSObject
+@interface FMSockerClient : NSObject <SRWebSocketDelegate>
 
 - (instancetype)initWithURL:(NSURL *)URL;
 
