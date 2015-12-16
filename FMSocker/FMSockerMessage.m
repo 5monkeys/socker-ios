@@ -6,8 +6,8 @@
 //  Copyright © 2015 5 Monkeys Agency AB. All rights reserved.
 //
 
-#import "FMSockerMessage.h"
 #import "FMErrors.h"
+#import "FMSockerMessage.h"
 
 @interface FMSockerMessage ()
 
@@ -31,21 +31,27 @@
 {
     // Check for error prefix
     if ([string hasPrefix:@"#"]) {
-        *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerInvalidDataError userInfo:nil];
+        if (errorPtr != NULL) {
+            *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerInvalidDataError userInfo:nil];
+        }
         return nil;
     }
     NSRange range = [string rangeOfString:@"|"];
 
     // Check for socker protocol fullfilment
     if (range.location == NSNotFound) {
-        *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
+        if (errorPtr != NULL) {
+            *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
+        }
         return nil;
     }
     // Parse payload
     NSString *name = [string substringToIndex:range.location];
     if ([name length] == 0) {
         // Missing channel
-        *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
+        if (errorPtr != NULL) {
+            *errorPtr = [NSError errorWithDomain:FMErrorDomain code:FMSockerDataParseError userInfo:nil];
+        }
         return nil;
     }
     NSData *jsonData = [[string substringFromIndex:range.location + range.length] dataUsingEncoding:NSUTF8StringEncoding];
