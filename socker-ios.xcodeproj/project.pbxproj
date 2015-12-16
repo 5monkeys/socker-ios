@@ -9,17 +9,16 @@
 /* Begin PBXBuildFile section */
 		825B50E9430D5E3B3761461B /* libPods-FMSockerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CEE7B0BB86F6912AE5BAEE /* libPods-FMSockerTests.a */; };
 		8B39BDB021178C74D33413F3 /* libPods-FMSocker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEAC02402CC853F7BAD9266 /* libPods-FMSocker.a */; };
-		D1698B911BBC2FBE00FC0773 /* FMSockerClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1698B901BBC2FBE00FC0773 /* FMSockerClientTests.m */; settings = {ASSET_TAGS = (); }; };
-		D1BFF6221BBB22AF00E1AF90 /* FMSocker.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BFF6211BBB22AF00E1AF90 /* FMSocker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1BFF6291BBB22AF00E1AF90 /* FMSocker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BFF61E1BBB22AF00E1AF90 /* FMSocker.framework */; settings = {ASSET_TAGS = (); }; };
+		D1698B911BBC2FBE00FC0773 /* FMSockerClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1698B901BBC2FBE00FC0773 /* FMSockerClientTests.m */; };
+		D1BFF6291BBB22AF00E1AF90 /* FMSocker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BFF61E1BBB22AF00E1AF90 /* FMSocker.framework */; };
 		D1BFF62E1BBB22AF00E1AF90 /* FMSockerMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BFF62D1BBB22AF00E1AF90 /* FMSockerMessageTests.m */; };
-		D1C3E9101BBB26100027257D /* FMErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90A1BBB26100027257D /* FMErrors.h */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9111BBB26100027257D /* FMErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E90B1BBB26100027257D /* FMErrors.m */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9121BBB26100027257D /* FMSocker.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90C1BBB26100027257D /* FMSocker.h */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9131BBB26100027257D /* FMSockerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90D1BBB26100027257D /* FMSockerClient.h */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9141BBB26100027257D /* FMSockerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E90E1BBB26100027257D /* FMSockerClient.m */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9151BBB26100027257D /* FMSockerMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90F1BBB26100027257D /* FMSockerMessage.h */; settings = {ASSET_TAGS = (); }; };
-		D1C3E9171BBB2DAE0027257D /* FMSockerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E9161BBB2DAE0027257D /* FMSockerMessage.m */; settings = {ASSET_TAGS = (); }; };
+		D1C3E9101BBB26100027257D /* FMErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90A1BBB26100027257D /* FMErrors.h */; };
+		D1C3E9111BBB26100027257D /* FMErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E90B1BBB26100027257D /* FMErrors.m */; };
+		D1C3E9121BBB26100027257D /* FMSocker.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90C1BBB26100027257D /* FMSocker.h */; };
+		D1C3E9131BBB26100027257D /* FMSockerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90D1BBB26100027257D /* FMSockerClient.h */; };
+		D1C3E9141BBB26100027257D /* FMSockerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E90E1BBB26100027257D /* FMSockerClient.m */; };
+		D1C3E9151BBB26100027257D /* FMSockerMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C3E90F1BBB26100027257D /* FMSockerMessage.h */; };
+		D1C3E9171BBB2DAE0027257D /* FMSockerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E9161BBB2DAE0027257D /* FMSockerMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +150,6 @@
 			files = (
 				D1C3E9101BBB26100027257D /* FMErrors.h in Headers */,
 				D1C3E9121BBB26100027257D /* FMSocker.h in Headers */,
-				D1BFF6221BBB22AF00E1AF90 /* FMSocker.h in Headers */,
 				D1C3E9151BBB26100027257D /* FMSockerMessage.h in Headers */,
 				D1C3E9131BBB26100027257D /* FMSockerClient.h in Headers */,
 			);
@@ -206,7 +204,7 @@
 		D1BFF6151BBB22AF00E1AF90 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "5 Monkeys Agency AB";
 				TargetAttributes = {
 					D1BFF61D1BBB22AF00E1AF90 = {
