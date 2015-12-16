@@ -80,7 +80,7 @@
     }
 }
 
-- (void)sendSockerMessage:(FMSockerMessage *)message error:(NSError **)errorPtr
+- (BOOL)sendSockerMessage:(FMSockerMessage *)message error:(NSError **)errorPtr
 {
     NSString *messageString = [message toStringAndReturnError:errorPtr];
     if (!*errorPtr) {
@@ -90,9 +90,11 @@
         else {
             [self.webSocket send:messageString];
         }
+        return YES;
     }
     else {
         NSLog(@"Failed to send message on channel %@ with error %@", message.name, [*errorPtr localizedDescription]);
+        return NO;
     }
 }
 
